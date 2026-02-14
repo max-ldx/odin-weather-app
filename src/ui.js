@@ -1,3 +1,5 @@
+import { getIcon } from "./icon-mapper.js";
+
 export function initUI(weatherService) {
 	const form = document.querySelector("#searchForm");
 
@@ -13,24 +15,24 @@ export function initUI(weatherService) {
 
 function render(data) {
 	const address = document.querySelector("#address");
-    const temp = document.querySelector("#temp");
-    const feelslike = document.querySelector("#feelslike");
-    const tempmin = document.querySelector("#tempmin");
-    const tempmax = document.querySelector("#tempmax");
+	const temp = document.querySelector("#temp");
+	const feelslike = document.querySelector("#feelslike");
+	const tempmin = document.querySelector("#tempmin");
+	const tempmax = document.querySelector("#tempmax");
 	const next24Hours = document.querySelector("#next-24-hours");
+	next24Hours.textContent = null;
 
 	address.textContent = data.address;
-    temp.textContent = `${data.temp} °C`;
-    feelslike.textContent = `Feels like: ${data.feelslike} °C`;
-    tempmin.textContent = `${data.tempmin} °C`;
-    tempmax.textContent = `${data.tempmax} °C`;
+	temp.textContent = `${data.temp} °C`;
+	feelslike.textContent = `Feels like: ${data.feelslike} °C`;
+	tempmin.textContent = `${data.tempmin} °C`;
+	tempmax.textContent = `${data.tempmax} °C`;
 
-	for(const hour of data.next24Hours) {
+	for (const hour of data.next24Hours) {
 		const hourContainer = document.createElement("div");
 		const hourElement = document.createElement("div");
 		hourElement.textContent = hour.datetime;
-		const iconElement = document.createElement("div");
-		iconElement.textContent = hour.icon;
+		const iconElement = getIcon(hour.icon);
 		const tempElement = document.createElement("div");
 		tempElement.textContent = hour.temp;
 
