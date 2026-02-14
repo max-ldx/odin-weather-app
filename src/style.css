@@ -1,5 +1,37 @@
-#next-24-hours {
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+body {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+}
+
+#searchForm {
+	display: flex;
+	gap: 1rem;
+}
+
+#container {
+	max-width: 70vw;
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
     gap: 1rem;
+}
+
+#tempminmax {
+    display: flex;
+    gap: .5rem;
+}
+
+#next-24-hours {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1rem;
 }
